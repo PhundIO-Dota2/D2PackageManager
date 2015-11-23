@@ -1,0 +1,3 @@
+﻿bmddota/barebones,source2:[modtype:base]
+Perryvw/CustomHeroSelection,master:[modtype:library,standard:false,remap_VScripts:vscripts,remap_PanoramaContent:panorama]
+Perryvw/LuaLibraries,master:[modtype:lua_scripts]

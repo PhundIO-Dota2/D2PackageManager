@@ -70,6 +70,8 @@ namespace D2PackageManager {
             Directory.Delete("library", true);
             File.Delete("library.zip");
 
+            Injector.Inject(target_root_dir_game + "/scripts/vscripts/internal/d2packagemanager.lua", this);
+
             if (!File.Exists(target_root_dir_game + "/d2packagemanager_info.txt")) {
                 File.Create(target_root_dir_game + "/d2packagemanager_info.txt").Close();
                 File.WriteAllText(target_root_dir_game + "/d2packagemanager_info.txt", "base:" + Libraries.D2Libraries[0].FullyQualifiedName);

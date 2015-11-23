@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace D2PackageManager {
     public static class IOHelper {
         public static void Copyfolder(string SourcePath, string DestinationPath) {
+            Directory.CreateDirectory(DestinationPath);
             foreach (string dirPath in Directory.GetDirectories(SourcePath, "*",
                 SearchOption.AllDirectories))
                 Directory.CreateDirectory(dirPath.Replace(SourcePath, DestinationPath));

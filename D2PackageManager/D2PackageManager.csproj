@@ -56,6 +56,8 @@
     <Compile Include="D2PackageManagerMainForm.Designer.cs">
       <DependentUpon>D2PackageManagerMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Injector.cs" />
     <Compile Include="IOHelper.cs" />
     <Compile Include="Libraries.cs" />
     <Compile Include="Program.cs" />

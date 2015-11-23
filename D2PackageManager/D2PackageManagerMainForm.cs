@@ -120,6 +120,17 @@ namespace D2PackageManager {
 
             //Libraries.D2Libraries[1].ApplyToAddon(new_addon_name);
             //Libraries.D2Libraries[2].ApplyToAddon(new_addon_name);
+            var addon_game_mode_path = AddonGameFolder + "/" + new_addon_name + "/scripts/vscripts/addon_game_mode.lua";
+            var addon_game_mode_text = File.ReadAllText(addon_game_mode_path);
+            var injection_line = "function Activate()\n  --Do not touch this line or change indentation\n  require('internal.d2packagemanager')\n  --Thank you.";
+            if (!addon_game_mode_text.Contains(injection_line)) {
+                addon_game_mode_text = addon_game_mode_text.Replace(
+                    @"function Activate()",
+                    injection_line
+                );
+                File.Delete(addon_game_mode_path);
+                File.WriteAllText(addon_game_mode_path, addon_game_mode_text);
+            }
 
             ReloadAddons();
 
@@ -131,8 +142,12 @@ namespace D2PackageManager {
                                      "Confirm Delete!!",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes) {
-                Directory.Delete(CurrentAddonContentFolder, true);
-                Directory.Delete(CurrentAddonGameFolder, true);
+                if (Directory.Exists(CurrentAddonContentFolder)) {
+                    Directory.Delete(CurrentAddonContentFolder, true);
+                }
+                if (Directory.Exists(CurrentAddonGameFolder)) {
+                    Directory.Delete(CurrentAddonGameFolder, true);
+                }
                 ReloadAddons();
             }
         }

@@ -17,6 +17,9 @@ namespace D2PackageManager {
     public enum RemapKey {
         VScripts,
         PanoramaContent,
+        Particles,
+        Maps,
+        Abilities,
     }
     public class D2Library {
         public string Author = "";
@@ -44,6 +47,15 @@ namespace D2PackageManager {
                 }
                 if (remap.Key == RemapKey.PanoramaContent) {
                     IOHelper.Copyfolder(root_dir + remap.Value, target_root_dir_content + "/panorama/");
+                }
+                if (remap.Key == RemapKey.Maps) {
+                    IOHelper.Copyfolder(root_dir + remap.Value, target_root_dir_content + "/maps/");
+                }
+                if (remap.Key == RemapKey.Particles) {
+                    IOHelper.Copyfolder(root_dir + remap.Value, target_root_dir_content + "/particles/");
+                }
+                if (remap.Key == RemapKey.Abilities) {
+                    IOHelper.Copyfolder(root_dir + remap.Value, target_root_dir_game + "/scripts/npc/abilities");
                 }
             }
 
